@@ -4,10 +4,11 @@ from moduleapp import recommend_movie, movies_list
 
 app=Flask(__name__)
 
+movies_lst=movies_list()
 
 @app.route("/")
 def home():
-    return render_template('index.html',key="NO")
+    return render_template('index.html',key="NO",movies_list=movies_lst)
 # print(recommend_movie("Towering"))
 
 @app.route("/movies",methods=["POST"])
@@ -27,7 +28,7 @@ def movies():
         
     # print(Movies)
     return render_template('index.html'
-    ,headers=headers,Movies=Movies,key="Yes"
+    ,headers=headers,Movies=Movies,key="Yes",movies_list=movies_lst
     )
 
 
